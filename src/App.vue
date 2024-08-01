@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import Contact from './components/Contact.vue'
+import Contact from './components/organisms/ContactForm.vue'
 </script>
 
 <template>
-  <div>
-    <Contact></Contact>
+  <div class="p-2">
+    <Contact class="w-1/2 m-auto"/>
   </div>
 </template>
 
