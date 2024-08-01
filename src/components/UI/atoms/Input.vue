@@ -13,7 +13,7 @@
     v-model="model"
     :type="type"
     @blur="$emit('blurEmit')"
-    class="rounded-xl p-1 pl-2 underline-none border"
+    class="pl-2 underline-none focus:outline-none border-b text-slate-500"
     :required="isRequired"
   />
 </template>

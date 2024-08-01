@@ -5,7 +5,7 @@
 </script>
 
 <template>
-  <label label="data">{{label}}</label>
+  <label class="font-bold" label="data">{{label}}</label>
 </template>
 
 <style scoped>

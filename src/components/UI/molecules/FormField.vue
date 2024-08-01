@@ -10,7 +10,7 @@ const props = defineProps<{
   addClass?: string
   validator?:string[]
 }>()
-defineEmits(['errorEmit'])
+
 const model = defineModel({ required: true })
 const error = ref<string | null>(null)
 const isRequired = ref(false)
@@ -34,7 +34,7 @@ onMounted(()=>{
 </script>
 
 <template>
-  <div :class="['flex gap-2',addClass]">
+  <div :class="['flex mb-3 gap-2',addClass]">
     <Label
       :label="labelValue">
     </Label>
