@@ -1,7 +1,7 @@
 <template>
   <div class="bg-gray-200 text-black p-5 rounded-2xl flex flex-col justify-start gap-2">
     <span class="text-3xl text-center font-semibold">Contact Us</span>
-    <form @submit="checkForm">
+    <form @submit="checkForm($event)">
       <FormField
         v-model="formData.name"
         label-value="Name"
@@ -50,9 +50,11 @@ const formData = ref<ContactModel>({
   email:'',
   perms:false
 })
-const checkForm = () => {
-  alert('Se enviaron los datos.')
+const checkForm = (e:Event) => {
+    alert('Se enviaron los datos.')
+    e.preventDefault()
 }
+
 </script>
 
 <style scoped></style>
