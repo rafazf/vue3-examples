@@ -1,18 +1,14 @@
 import { createRouter, createWebHistory, type Router } from 'vue-router'
 import Home from '../views/Home.vue'
 import Contact from '../views/Contact.vue'
-import Brasil from '../views/Brasil.vue'
-import Jamaica from '../views/Jamaica.vue'
-import Hawaii from '../views/Hawaii.vue'
-import Panama from '../views/Panama.vue'
 
 const routes = [
   { path: '/', name: 'Home', component: Home },
   { path: '/contact', name: 'Contact', component: Contact },
-  { path: '/brasil', name: 'Brasil', component: Brasil },
-  { path: '/panama', name: 'Panama', component: Panama },
-  { path: '/hawaii', name: 'Hawaii', component: Hawaii },
-  { path: '/jamaica', name: 'Jamaica', component: Jamaica }
+  { path: '/brazil', name: 'Brasil', component: () => import('../views/Brasil.vue') },
+  { path: '/panama', name: 'Panama', component: () => import('../views/Panama.vue') },
+  { path: '/hawaii', name: 'Hawaii', component: () => import('../views/Hawaii.vue') },
+  { path: '/jamaica', name: 'Jamaica', component: () => import('../views/Jamaica.vue') }
 ]
 const index: Router = createRouter({
   history: createWebHistory(),
