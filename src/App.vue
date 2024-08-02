@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import NavBar from '@/components/common/NavBar.vue'
+import TheNavigation from './components/TheNavigation.vue'
 </script>
 
 <template>
-  <NavBar></NavBar>
+  <TheNavigation></TheNavigation>
   <RouterView/>
 </template>
 
