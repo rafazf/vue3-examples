@@ -3,6 +3,7 @@ import sourceData from '../data.json'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
+
 const destinationId = () => {
   return parseInt(route.params.id + '')
 }
