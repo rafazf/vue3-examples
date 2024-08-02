@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import Contact from './components/organisms/ContactForm.vue'
+import NavBar from '@/components/common/NavBar.vue'
 </script>
 
 <template>
-  <div class="p-2">
-    <Contact class="w-1/2 m-auto"/>
-  </div>
+  <NavBar></NavBar>
+  <RouterView/>
 </template>
 
 <style scoped></style>
