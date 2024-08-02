@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import sourceData from '@/data.json'
 
 const showSettings = ref(false)
 const onShowSettings = () => {
@@ -11,10 +12,13 @@ const onShowSettings = () => {
   <div class="border-b w-full h-16 flex justify-center items-center relative">
     <ul class="w-1/2 m-auto flex justify-center gap-16">
       <router-link to="/">Home</router-link>
-      <router-link to="/brazil">Brasil</router-link>
-      <router-link to="/panama">Panama</router-link>
-      <router-link to="/hawaii">Hawaii</router-link>
-      <router-link to="/jamaica">Jamaica</router-link>
+      <router-link
+        v-for="destination in sourceData.destinations"
+        :key="destination.name"
+        :to="{name:'destination.show',params:{id:destination.id}}"
+      >
+        <h2>{{destination.name}}</h2>
+      </router-link>
     </ul>
     <div @click="onShowSettings" class="w-12 h-12 bg-gradient-to-t from-indigo-500 via-purple-500 to-pink-500 rounded-full mx-2 cursor-pointer overflow-hidden ">
       <img src="../assets/img/avatar0.png" alt="">
