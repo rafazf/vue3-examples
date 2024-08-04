@@ -15,7 +15,7 @@ const onShowSettings = () => {
       <router-link
         v-for="destination in sourceData.destinations"
         :key="destination.name"
-        :to="{name:'destination.show',params:{id:destination.id}}"
+        :to="{name:'destination.show',params:{id:destination.id,slug:destination.slug}}"
       >
         <h2>{{destination.name}}</h2>
       </router-link>
