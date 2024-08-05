@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import sourceData from '../data.json'
 import { useRoute } from 'vue-router'
-import { onMounted, ref, watch } from 'vue'
 
 const route = useRoute()
 
@@ -11,29 +10,18 @@ const destinationId = () => {
 const destinationBySlug = () => {
   return route.params.slug
 }
-/*const destination = () => {
-  return sourceData.destinations.find(destination => destination.id === destinationByParam('id'))
-}*/
-const destination = ref();
-
-const created = async () => {
-  await fetch(`/api/${destinationBySlug()}.json`)
-    .then(res => res.json())
-    .then(data => {destination.value = data})
+const destination = () => {
+  return sourceData.destinations.find(destination => destination.id === destinationId())
 }
-
-onMounted(()=>{
-  created();
-})
 
 </script>
 
 <template>
   <section v-if="destination" class="destination">
-    <h1 class="font-bold text-xl">{{ destination!.name }}</h1>
+    <h1 class="font-bold text-xl">{{ destination()!.name }}</h1>
     <div class="destination-detail">
-      <img :src="`/images/${destination!.image}`" :alt="destination!.name" />
-      <p class="text-[12px]">{{ destination!.description }}</p>
+      <img :src="`/images/${destination()!.image}`" :alt="destination!.name" />
+      <p class="text-[12px]">{{ destination()!.description }}</p>
     </div>
   </section>
 </template>
