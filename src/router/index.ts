@@ -5,7 +5,12 @@ import Contact from '../views/Contact.vue'
 const routes = [
   { path: '/', name: 'Home', component: Home },
   { path: '/contact', name: 'Contact', component: Contact },
-  {path: '/destination/:id/:slug',name:'destination.show', component:()=>import('../views/DestinationShow.vue')}
+  {
+    path: '/destination/:id/:slug',
+    name:'destination.show',
+    component:()=>import('../views/DestinationShow.vue'),
+    props:true
+  }
 ]
 const index: Router = createRouter({
   history: createWebHistory(),

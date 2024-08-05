@@ -2,16 +2,18 @@
 import sourceData from '../data.json'
 import { useRoute } from 'vue-router'
 
+const props = defineProps<{
+  id: string,
+}>()
+
 const route = useRoute()
 
-const destinationId = () => {
-  return parseInt(route.params.id + '')
-}
 const destinationBySlug = () => {
   return route.params.slug
 }
 const destination = () => {
-  return sourceData.destinations.find(destination => destination.id === destinationId())
+  console.log(props.id)
+  return sourceData.destinations.find(destination => destination.id === parseInt(props.id))
 }
 
 </script>
@@ -45,6 +47,6 @@ const destination = () => {
 .destination-detail img {
   border: #2c3e50 1px solid;
   height: 200px;
-  box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.1);
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
 }
 </style>
