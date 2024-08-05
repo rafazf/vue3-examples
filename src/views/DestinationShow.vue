@@ -3,7 +3,7 @@ import sourceData from '../data.json'
 import { useRoute } from 'vue-router'
 
 const props = defineProps<{
-  id: string,
+  id: number,
 }>()
 
 const route = useRoute()
@@ -12,8 +12,7 @@ const destinationBySlug = () => {
   return route.params.slug
 }
 const destination = () => {
-  console.log(props.id)
-  return sourceData.destinations.find(destination => destination.id === parseInt(props.id))
+  return sourceData.destinations.find(destination => destination.id === props.id)
 }
 
 </script>

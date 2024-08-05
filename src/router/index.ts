@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, type Router } from 'vue-router'
+import { createRouter, createWebHistory, type RouteLocationNormalized, type Router, useRoute } from 'vue-router'
 import Home from '../views/Home.vue'
 import Contact from '../views/Contact.vue'
 
@@ -9,7 +9,7 @@ const routes = [
     path: '/destination/:id/:slug',
     name:'destination.show',
     component:()=>import('../views/DestinationShow.vue'),
-    props:true
+    props:(route:RouteLocationNormalized) => ({id: parseInt(route.params.id+'')}),
   }
 ]
 const index: Router = createRouter({
