@@ -2,7 +2,6 @@
 import sourceData from '../data.json'
 import { useRoute } from 'vue-router'
 import { onMounted, ref, watch } from 'vue'
-import * as wasi from 'node:wasi'
 
 const route = useRoute()
 
@@ -22,9 +21,7 @@ const created = async () => {
     .then(res => res.json())
     .then(data => {destination.value = data})
 }
-watch(destinationBySlug,() => {
-  created()
-})
+
 onMounted(()=>{
   created();
 })

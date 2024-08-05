@@ -4,7 +4,7 @@ import TheNavigation from './components/TheNavigation.vue'
 
 <template>
   <TheNavigation></TheNavigation>
-  <RouterView/>
+  <RouterView :key="$route.path"/>
 </template>
 
 <style scoped></style>
