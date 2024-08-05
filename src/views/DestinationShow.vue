@@ -1,24 +1,42 @@
 <script setup lang="ts">
 import sourceData from '../data.json'
 import { useRoute } from 'vue-router'
+import { onMounted, ref, watch } from 'vue'
+import * as wasi from 'node:wasi'
 
 const route = useRoute()
 
 const destinationId = () => {
   return parseInt(route.params.id + '')
 }
-const destination = () => {
-  return sourceData.destinations.find(destination => destination.id === destinationId())
+const destinationBySlug = () => {
+  return route.params.slug
 }
+/*const destination = () => {
+  return sourceData.destinations.find(destination => destination.id === destinationByParam('id'))
+}*/
+const destination = ref();
+
+const created = async () => {
+  await fetch(`/api/${destinationBySlug()}.json`)
+    .then(res => res.json())
+    .then(data => {destination.value = data})
+}
+watch(destinationBySlug,() => {
+  created()
+})
+onMounted(()=>{
+  created();
+})
 
 </script>
 
 <template>
-  <section class="destination">
-    <h1 class="font-bold text-xl">{{ destination()!.name }}</h1>
+  <section v-if="destination" class="destination">
+    <h1 class="font-bold text-xl">{{ destination!.name }}</h1>
     <div class="destination-detail">
-      <img :src="`/images/${destination()!.image}`" :alt="destination()!.name" />
-      <p class="text-[12px]">{{ destination()!.description }}</p>
+      <img :src="`/images/${destination!.image}`" :alt="destination!.name" />
+      <p class="text-[12px]">{{ destination!.description }}</p>
     </div>
   </section>
 </template>
